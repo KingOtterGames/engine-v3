@@ -1,0 +1,75 @@
+{
+    "name": "engine-v3",
+    "version": "0.1.0",
+    "private": true,
+    "author": "King Otter Games",
+    "homepage": ".",
+    "main": "electron/main.js",
+    "scripts": {
+        "start": "npm run version:full",
+        "start:demo": "npm run version:demo",
+        "rebuild": "electron-rebuild",
+        "version:full": "concurrently \"cross-env BROWSER=none npm run run:frontend\" \"set REACT_APP_DEMO=false && npm run run:electron\" -k",
+        "version:demo": "concurrently \"cross-env BROWSER=none npm run run:frontend\" \"set REACT_APP_DEMO=true && npm run run:electron\" -k",
+        "run:electron": "wait-on http://127.0.0.1:3000 && electron .",
+        "run:frontend": "react-scripts start",
+        "test": "react-scripts test",
+        "package": "sh ./package.sh",
+        "package:clean": "rimraf ./build && rimraf ./dist",
+        "package:build:full": "set REACT_APP_DEMO=false && react-scripts build",
+        "package:build:demo": "set REACT_APP_DEMO=true && react-scripts build",
+        "package:pack": "electron-builder --dir"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "build": {
+        "asarUnpack": [
+            "**/build/electron/**/*"
+        ],
+        "extends": null,
+        "files": [
+            "!*.*",
+            "!**/*",
+            "node_modules/**/*",
+            "build/**/*"
+        ],
+        "directories": {
+            "buildResources": "assets"
+        }
+    },
+    "dependencies": {
+        "electron-is-dev": "^2.0.0",
+        "env-cmd": "^10.1.0",
+        "howler": "^2.2.4",
+        "steamworks.js": "^0.0.26"
+    },
+    "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+        "concurrently": "^7.6.0",
+        "cross-env": "^7.0.3",
+        "electron": "23.3.13",
+        "electron-builder": "23.6.0",
+        "lodash.clonedeep": "^4.5.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-scripts": "^5.0.1",
+        "uuid": "^9.0.0",
+        "wait-on": "^7.2.0"
+    }
+}
