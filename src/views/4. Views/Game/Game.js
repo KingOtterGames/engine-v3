@@ -16,10 +16,6 @@ function Game() {
         })
     }, [])
 
-    // useEffect(() => {
-    //     Creatures.Dispatch.add(dispatch, Creatures.Helpers.generate(1, 70), 1, '')
-    // }, [])
-
     /**
      * Gameplay Loop
      */
@@ -99,7 +95,7 @@ function Game() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
 
-    return <div className="App"></div>
+    return <div>Hello, world!</div>
 }
 
 export default Game

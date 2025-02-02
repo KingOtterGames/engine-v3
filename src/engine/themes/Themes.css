@@ -1,0 +1,19 @@
+:root {
+    --primary: #ffd700;
+    --secondary: #ffb300;
+    --bg: black;
+    --txt: white;
+    --gradient-start: rgba(40, 40, 40, 0.95);
+    --gradient-end: rgba(30, 30, 30, 0.95);
+    --border-color: rgba(255, 215, 0, 0.2);
+}
+
+[data-theme='neon'] {
+    --primary: #00ff9f;
+    --secondary: #00ccff;
+    --bg: black;
+    --txt: white;
+    --gradient-start: rgba(35, 35, 45, 0.95);
+    --gradient-end: rgba(25, 25, 35, 0.95);
+    --border-color: rgba(0, 255, 159, 0.2);
+}
