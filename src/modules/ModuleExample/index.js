@@ -1,4 +1,4 @@
-const onUpdate = (state, deltaTime) => {
+const onUpdate = (state, _deltaTime) => {
     return state
 }
 

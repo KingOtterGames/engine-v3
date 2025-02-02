@@ -1,4 +1,4 @@
-const example = (state, payload) => {
+const example = (state, _payload) => {
     return state
 }
 

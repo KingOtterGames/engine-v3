@@ -15,7 +15,7 @@ const version = (json) => {
 }
 
 const load = () => {
-    return new Promise((res, rej) => {
+    return new Promise((res) => {
         window.api.load().then((json) => {
             if (json) res(patch(version(json), DEFAULT_SAVE))
             res(cloneDeep(DEFAULT_SAVE))

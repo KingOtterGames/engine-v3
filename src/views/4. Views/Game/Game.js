@@ -28,9 +28,8 @@ function Game() {
         let accumulatedLagTime = 0
 
         // Offline Progress & Catchup
-        // if (ENGINE.OFFLINE_PROGRESS) {
-        //     // Implement Offline Progress
-        // }
+        if (GlobalConfigs.OFFLINE_PROGRESS) {
+        }
 
         // Stopping Gameplay Loop Handler
         const stop = () => {
@@ -76,7 +75,6 @@ function Game() {
         tick(currentFrameTime)
 
         return stop
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     /**
@@ -92,7 +90,6 @@ function Game() {
         return () => {
             window.removeEventListener('beforeunload', handler)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
 
     return <div>Hello, world!</div>

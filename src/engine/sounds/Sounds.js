@@ -23,14 +23,14 @@ const play = (key) => {
     SoundLibrary[key].play()
 }
 
-const volume = (type, level) => {
+const volume = (level) => {
     let keys = Object.keys(SoundLibrary)
     for (let i = 0; i < keys.length; i++) {
         SoundLibrary[keys[i]].volume(level)
     }
 }
 
-const stop = (type) => {
+const stop = () => {
     let keys = Object.keys(SoundLibrary)
     for (let i = 0; i < keys.length; i++) {
         SoundLibrary[keys[i]].stop()
