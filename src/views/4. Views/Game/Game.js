@@ -4,9 +4,10 @@ import Saves from '../../../engine/saves/Saves'
 import GlobalConfigs from '../../../configs/global'
 import ModuleExampleActions from '../../../modules/ModuleExample/actions'
 import Sounds from '../../../engine/sounds/Sounds'
+import PropTypes from 'prop-types'
 
-function Game() {
-    const [state, dispatch] = useReducer(Dispatcher.reducer, {})
+function Game({ save }) {
+    const [state, dispatch] = useReducer(Dispatcher.reducer, save)
 
     useEffect(() => {
         Sounds.play('wow')
@@ -93,6 +94,10 @@ function Game() {
     }, [state])
 
     return <div>Hello, world!</div>
+}
+
+Game.propTypes = {
+    save: PropTypes.object.isRequired,
 }
 
 export default Game

@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash.clonedeep'
 
 import V1 from './versions/v1'
+import GlobalConfigs from '../../configs/global'
 const DEFAULT_SAVE = cloneDeep(V1.DefaultSave)
 
 const version = (json) => {
@@ -15,6 +16,13 @@ const version = (json) => {
 }
 
 const load = () => {
+    if (GlobalConfigs.IS_WEB) {
+        return new Promise((res) => {
+            const json = localStorage.getItem('save')
+            if (json) res(cloneDeep(patch(version(JSON.parse(json)), DEFAULT_SAVE)))
+            res(cloneDeep(DEFAULT_SAVE))
+        })
+    }
     return new Promise((res) => {
         window.api.load().then((json) => {
             if (json) res(patch(version(json), DEFAULT_SAVE))
@@ -24,10 +32,19 @@ const load = () => {
 }
 
 const save = (state) => {
+    if (GlobalConfigs.IS_WEB) {
+        console.log(state)
+        localStorage.setItem('save', JSON.stringify(state))
+        return
+    }
     window.api.save(state)
 }
 
 const remove = () => {
+    if (GlobalConfigs.IS_WEB) {
+        localStorage.removeItem('save')
+        return
+    }
     window.api.remove()
 }
 
